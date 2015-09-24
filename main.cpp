@@ -1,19 +1,25 @@
 #include "Student.h"
+#include <iostream>
+#include <conio.h>
 #include "DoublyLinkedList.h"
 #include "DoublyLinkedList.cpp"
-#include "Student.h"
 
+//prototype
+void pressAnyKey();
 
 int main()
 {
+	Student objStudent;
+	DoublyLinkedList<Student> list;
+	list.addToCurrent(objStudent);
 
-	Student student;
+	
 
 	int choice;
 	auto keepGoing = true;
 	while (keepGoing)
 	{
-		std::cout << std::endl
+		cout << endl
 			<< "---------------------------------------------------------------------\n"
 			<< " Select an option from the menu below\n"
 			<< " by entering the number of the choice\n"
@@ -37,7 +43,7 @@ int main()
 			<< "---------------------------------------------------------------------\n\n"
 			<< "Enter your choice : \n\n";
 
-		std::cin >> choice;
+		cin >> choice;
 		switch (choice)
 		{
 			case 1:
@@ -80,10 +86,17 @@ int main()
 
 			case 9:
 			{
+				pressAnyKey();
 				break;
 			}
 		}
 	}
 
 	return 0;
+}
+
+void pressAnyKey()
+{
+	cout << "Press any key to continue...\n\n";
+	_getch();
 }

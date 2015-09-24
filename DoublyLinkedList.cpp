@@ -1,4 +1,5 @@
 #include "DoublyLinkedList.h"
+#include "Student.h"
 
 template <typename T>
 DoublyLinkedList<T>::DoublyLinkedList()
@@ -10,13 +11,14 @@ DoublyLinkedList<T>::DoublyLinkedList()
 template <typename T>
 DoublyLinkedList<T>::~DoublyLinkedList()
 {
-	
+
 }
 
+
 template <typename T>
-void DoublyLinkedList<T>::addToCurrent(T newData)
+void DoublyLinkedList<T>::addToCurrent(const T &newData)
 {
-	TemplateNode<T> *tempNode = new TemplateNode<T>;
+	TemplateNode *tempNode = new TemplateNode;
 	tempNode->data = newData;
 	if (currNode == nullptr)
 	{
@@ -35,7 +37,7 @@ void DoublyLinkedList<T>::addToCurrent(T newData)
 }
 
 template <typename T>
-void DoublyLinkedList<T>::editCurrent(T newData)
+void DoublyLinkedList<T>::editCurrent(const T &newData)
 {
 	currNode->data = newData;
 }
@@ -43,8 +45,12 @@ void DoublyLinkedList<T>::editCurrent(T newData)
 template <typename T>
 void DoublyLinkedList<T>::removeCurrent()
 {
-	TemplateNode<T> *tempNode;
+}
 
+template <typename T>
+void DoublyLinkedList<T>::displayCurrent()
+{
+	cout << currNode->data;
 }
 
 template <typename T>

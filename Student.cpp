@@ -1,4 +1,5 @@
 #include "Student.h"
+#include <string>
 
 
 //default constructor
