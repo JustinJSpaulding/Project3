@@ -9,9 +9,6 @@ int main()
 
 	Student student;
 
-
-
-
 	int choice;
 	auto keepGoing = true;
 	while (keepGoing)

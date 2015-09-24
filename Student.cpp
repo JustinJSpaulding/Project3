@@ -4,7 +4,6 @@
 //default constructor
 Student::Student()
 {
-	//test
 	id = "J00";
 	firstName = "default_firstname";
 	lastName = "default_lastname";
