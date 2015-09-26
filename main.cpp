@@ -10,14 +10,14 @@ void pressAnyKey();
 int main()
 {
 	Student objStudent;
-	DoublyLinkedList<Student> list;
-	list.addToCurrent(objStudent);
+	DoublyLinkedList<Student> studentList;
+	studentList.addToCurrent(objStudent);
 
-	
+	cout << objStudent << endl;
 
 	int choice;
-	auto keepGoing = true;
-	while (keepGoing)
+	bool isKeepGoing = true;
+	while (isKeepGoing)
 	{
 		cout << endl
 			<< "---------------------------------------------------------------------\n"
@@ -44,32 +44,50 @@ int main()
 			<< "Enter your choice : \n\n";
 
 		cin >> choice;
+		cin.clear();
+		cin.sync();
 		switch (choice)
 		{
 			case 1:
 			{
+				Student student;
+				student.setID();
+				student.setFirstName();
+				student.setLastName();
+				studentList.editCurrent(student);
+				studentList.addToCurrent(student);
 				break;
 			}
 			case 2:
 			{
+				Student student;
+				student.setID();
+				student.setFirstName();
+				student.setLastName();
+				studentList.editCurrent(student);
 				break;
 			}
-			case 3:
+			case 3: //remove current item
 			{
+				studentList.removeCurrent();
 				break;
 			}
-			case 4:
+			case 4: //sort from the current position
 			{
 				break;
 			}
 
-			case 5:
+			case 5: //search
 			{
+				//TODO add argument into search for
+				string keyword;
+				studentList.searchFor();
 				break;
 			}
 
-			case 6:
+			case 6: //display list
 			{
+				studentList.displayList();
 				break;
 			}
 
@@ -84,10 +102,32 @@ int main()
 				break;
 			}
 
-			case 9:
+			case 9://display current student
 			{
+				studentList.displayCurrent();
 				pressAnyKey();
 				break;
+			}
+			case 14: //display size of the list
+			{
+
+			}
+			case 15: //delete list
+			{
+				studentList.deleteList();
+			}
+			case 16: //end program
+			{
+				isKeepGoing = false;
+				cout << "The program will now end,\n";
+				pressAnyKey();
+				break;
+			}
+			default:
+			{
+				//FIXME crash at the end
+				cout << "This option is not available.\nPlease choose other available options.\n";
+				pressAnyKey();
 			}
 		}
 	}

@@ -25,9 +25,17 @@ public:
 
 	void setLastName(const string &lname);
 
+	void setID(); //get ID from user input 
+	void setFirstName(); //get first name from user input
+	void setLastName(); //get last name from user input
+
+
 	string getID() const;
 	string getFirstName() const;
 	string getLastName() const;
+
+	//convert string to UPPERCASE
+	void toUpper(string &str);
 };
 
 #endif

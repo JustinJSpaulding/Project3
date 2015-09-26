@@ -21,22 +21,48 @@ Student::Student(const std::string& id, const std::string& fname, const std::str
 //destructor
 Student::~Student()
 {
-	std::cout << "Object student is deleted.\n";
 }
 
 void Student::setID(const std::string& id)
 {
 	this->id = id;
+	toUpper(this->id);
 }
 
-void Student::setFirstName(const std::string& fname)
+void Student::setFirstName(const std::string& firstName)
 {
-	this->firstName = fname;
+	this->firstName = firstName;
+	toUpper(this->firstName);
 }
 
-void Student::setLastName(const std::string& lname)
+void Student::setLastName(const std::string& lastName)
 {
-	this->lastName = lname;
+	this->lastName = lastName;
+	toUpper(this->lastName);
+}
+
+void Student::setID()
+{
+	cout << "Enter student ID.\n";
+	cin >> id;
+	cin.ignore();
+	toUpper(id);
+}
+
+void Student::setFirstName()
+{
+	cout << "Enter student firstname.\n";
+	cin >> firstName;
+	toUpper(firstName);
+
+}
+
+void Student::setLastName()
+{
+	cout << "Enter student lastname.\n";
+	cin >> lastName;
+	toUpper(lastName);
+
 }
 
 std::string Student::getID() const
@@ -54,12 +80,19 @@ std::string Student::getLastName() const
 	return lastName;
 }
 
+void Student::toUpper(string& str)
+{
+	for (auto i = 0; i < str.length(); i++)
+	{
+		str[i] = toupper(str[i]);
+	}
+}
+
 //overload insrting operator
 ostream &operator << (ostream& out, const Student& theStudent)
 {
 	out << theStudent.getID()
-		<< " " << theStudent.getLastName()
-		<< ", " << theStudent.getFirstName()
-	<< endl;
+		<< " " << theStudent.getFirstName()
+		<< " " << theStudent.getLastName();
 	return out;
 }

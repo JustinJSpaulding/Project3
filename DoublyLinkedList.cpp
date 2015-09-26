@@ -11,16 +11,30 @@ DoublyLinkedList<T>::DoublyLinkedList()
 template <typename T>
 DoublyLinkedList<T>::~DoublyLinkedList()
 {
-
+	// IMPR efficency
+	while (currNode != nullptr)
+	{
+		removeCurrent();
+	}
 }
 
+template <typename T>
+bool DoublyLinkedList<T>::isEmpty()
+{
+	if (currNode == nullptr)
+	{
+		return true;
+	}
+	return false;
+}
 
+//working
 template <typename T>
 void DoublyLinkedList<T>::addToCurrent(const T &newData)
 {
 	TemplateNode *tempNode = new TemplateNode;
 	tempNode->data = newData;
-	if (currNode == nullptr)
+	if (isEmpty())
 	{
 		tempNode->next = tempNode;
 		tempNode->prev = tempNode;
@@ -34,17 +48,72 @@ void DoublyLinkedList<T>::addToCurrent(const T &newData)
 		tempNode->next = currNode;
 		currNode = tempNode;
 	}
+	++size;
 }
 
+//
 template <typename T>
 void DoublyLinkedList<T>::editCurrent(const T &newData)
 {
-	currNode->data = newData;
+	if (!isEmpty())
+	{
+		currNode->data = newData;
+	}
 }
 
 template <typename T>
 void DoublyLinkedList<T>::removeCurrent()
 {
+	if (!isEmpty())
+	{
+		TemplateNode *tempNode = currNode;
+		TemplateNode *prevNode = currNode->prev;
+		currNode = tempNode->next;
+		currNode->prev = prevNode;
+		prevNode->next = currNode;
+		delete tempNode;
+	}
+	--size;
+}
+
+
+template <typename T>
+void DoublyLinkedList<T>::searchFor()
+{
+	if (!isEmpty())
+	{
+		TemplateNode *beginNode = currNode;
+		do
+		{
+			//FIXME add checking keyword
+			currNode = currNode->next;
+		}
+		while (currNode->next != beginNode);
+	}
+	else
+	{
+		cout << "The list is empty.\n";
+	}
+}
+
+template <typename T>
+void DoublyLinkedList<T>::displayList()
+{
+	if (!isEmpty())
+	{
+		TemplateNode *beginNode = currNode;
+		do
+		{
+			cout << currNode->data << endl;
+			currNode->next;
+		}
+		while (currNode != beginNode);
+	}
+	else
+	{
+		cout << "The list is empty.\n";
+	}
+
 }
 
 template <typename T>
@@ -54,8 +123,14 @@ void DoublyLinkedList<T>::displayCurrent()
 }
 
 template <typename T>
+void DoublyLinkedList<T>::displaySize()
+{
+	cout << "The list has " << size << " elements.\n";
+}
+
+template <typename T>
 void DoublyLinkedList<T>::deleteList()
 {
-	~DoublyLinkedList();
+	size = 0;
 }
 
