@@ -48,7 +48,6 @@ void DoublyLinkedList<T>::addToCurrent(const T &newData)
 		tempNode->next = currNode;
 		currNode = tempNode;
 	}
-	++size;
 }
 
 //
@@ -73,15 +72,11 @@ void DoublyLinkedList<T>::removeCurrent()
 		prevNode->next = currNode;
 		delete tempNode;
 	}
-	--size;
-
 }
-
 
 template <typename T>
 void DoublyLinkedList<T>::searchFor()
 {
-
 	if (!isEmpty())
 	{
 		TemplateNode<T> *beginNode = currNode;
@@ -91,7 +86,7 @@ void DoublyLinkedList<T>::searchFor()
 			cin >> keyword;
 			if (keyword.compare(keyword))
 			//FIXME add checking keyword
-			currNode = currNode->next;
+				currNode = currNode->next;
 		}
 		while (currNode->next != beginNode);
 	}
@@ -137,7 +132,6 @@ void DoublyLinkedList<T>::writeToFile()
 template <typename T>
 void DoublyLinkedList<T>::loadFromFile()
 {
-
 	ifstream textFile("input.txt", ios::in);
 	if (!textFile)
 	{
@@ -145,7 +139,7 @@ void DoublyLinkedList<T>::loadFromFile()
 		exit(1);
 	}
 	// TODO take a look at this T::readFile(textFile);
-	auto studentVector = Student::readFile(textFile);
+	auto studentVector = T::readFile(textFile);
 	textFile.close();
 }
 
@@ -159,18 +153,39 @@ template <typename T>
 void DoublyLinkedList<T>::displayNext()
 {
 	cout << currNode->next->data;
+}
 
+template <typename T>
+void DoublyLinkedList<T>::displayPrev()
+{
+	cout << currNode->prev->data;
 }
 
 template <typename T>
 void DoublyLinkedList<T>::displaySize()
 {
-	cout << "The list has " << size << " elements.\n";
+	cout << "The list has " << getSizeOfList() << " elements.\n";
+}
+
+template <typename T>
+size_t DoublyLinkedList<T>::getSizeOfList()
+{
+	TemplateNode<T> *startNode = currNode;
+	size_t size = 0;
+	if (isEmpty())
+	{
+		exit(1);
+	}
+	for (TemplateNode<T> *walkerNode; walkerNode != startNode; walkerNode = walkerNode->next)
+	{
+		++size;
+	}
+	return size;
 }
 
 template <typename T>
 void DoublyLinkedList<T>::deleteList()
 {
-	size = 0;
+	cout << "The list is deleted.\n";
 }
 

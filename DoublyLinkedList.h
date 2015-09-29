@@ -29,7 +29,6 @@ class DoublyLinkedList
 {
 private:
 	TemplateNode<T> *currNode;
-	size_t size = 0;
 
 public:
 	DoublyLinkedList();
@@ -39,7 +38,7 @@ public:
 	void addToCurrent(const T &newData);
 	void editCurrent(const T &newData);
 	void removeCurrent();
-	void sort();
+	void sort(); //TODO work on sort
 	void searchFor();
 	void displayList();
 	void writeToFile();
@@ -50,7 +49,7 @@ public:
 	void displayFirst(); //display first item in sorted list
 	void displayLast(); //display last item in sorted list
 	void displaySize();
-	void getSizeOfList();
+	size_t getSizeOfList();
 	void deleteList();
 };
 

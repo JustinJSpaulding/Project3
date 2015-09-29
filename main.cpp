@@ -110,7 +110,7 @@ int main()
 			}
 			case 14: //display size of the list
 			{
-
+				studentList.getSizeOfList();
 			}
 			case 15: //delete list
 			{
