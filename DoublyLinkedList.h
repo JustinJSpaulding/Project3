@@ -10,10 +10,15 @@ using namespace std;
 #ifndef DoublyLinkedList_H
 #define DoublyLinkedList_H
 
+//prototype for class DoublyLinkedList in order to make "friend class" work
+template <typename T>
+class DoublyLinkedList;
+
 template<typename T>
 class TemplateNode
 {
-public:
+	friend class DoublyLinkedList<T>;
+private:
 	T data;
 	TemplateNode *next;
 	TemplateNode *prev;
@@ -48,5 +53,6 @@ public:
 	void getSizeOfList();
 	void deleteList();
 };
+
 
 #endif

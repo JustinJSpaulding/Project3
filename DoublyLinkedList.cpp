@@ -74,17 +74,22 @@ void DoublyLinkedList<T>::removeCurrent()
 		delete tempNode;
 	}
 	--size;
+
 }
 
 
 template <typename T>
 void DoublyLinkedList<T>::searchFor()
 {
+
 	if (!isEmpty())
 	{
 		TemplateNode<T> *beginNode = currNode;
 		do
 		{
+			string keyword;
+			cin >> keyword;
+			if (keyword.compare(keyword))
 			//FIXME add checking keyword
 			currNode = currNode->next;
 		}
@@ -148,6 +153,13 @@ template <typename T>
 void DoublyLinkedList<T>::displayCurrent()
 {
 	cout << currNode->data;
+}
+
+template <typename T>
+void DoublyLinkedList<T>::displayNext()
+{
+	cout << currNode->next->data;
+
 }
 
 template <typename T>
