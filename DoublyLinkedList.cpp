@@ -176,7 +176,7 @@ size_t DoublyLinkedList<T>::getSizeOfList()
 	{
 		exit(1);
 	}
-	for (TemplateNode<T> *walkerNode; walkerNode != startNode; walkerNode = walkerNode->next)
+	for (TemplateNode<T> *walkerNode = currNode; walkerNode != startNode; walkerNode = walkerNode->next)
 	{
 		++size;
 	}
