@@ -32,7 +32,7 @@ bool DoublyLinkedList<T>::isEmpty()
 template <typename T>
 void DoublyLinkedList<T>::addToCurrent(const T &newData)
 {
-	TemplateNode *tempNode = new TemplateNode;
+	TemplateNode<T> *tempNode = new TemplateNode<T>;
 	tempNode->data = newData;
 	if (isEmpty())
 	{
@@ -66,8 +66,8 @@ void DoublyLinkedList<T>::removeCurrent()
 {
 	if (!isEmpty())
 	{
-		TemplateNode *tempNode = currNode;
-		TemplateNode *prevNode = currNode->prev;
+		TemplateNode<T> *tempNode = currNode;
+		TemplateNode<T> *prevNode = currNode->prev;
 		currNode = tempNode->next;
 		currNode->prev = prevNode;
 		prevNode->next = currNode;
@@ -82,7 +82,7 @@ void DoublyLinkedList<T>::searchFor()
 {
 	if (!isEmpty())
 	{
-		TemplateNode *beginNode = currNode;
+		TemplateNode<T> *beginNode = currNode;
 		do
 		{
 			//FIXME add checking keyword
@@ -101,7 +101,7 @@ void DoublyLinkedList<T>::displayList()
 {
 	if (!isEmpty())
 	{
-		TemplateNode *beginNode = currNode;
+		TemplateNode<T> *beginNode = currNode;
 		do
 		{
 			cout << currNode->data << endl;
@@ -113,7 +113,35 @@ void DoublyLinkedList<T>::displayList()
 	{
 		cout << "The list is empty.\n";
 	}
+}
 
+template <typename T>
+void DoublyLinkedList<T>::writeToFile()
+{
+	ofstream studentTextFile("students.txt", ios::out);
+	if (!studentTextFile)
+	{
+		cerr << "File does not exit or could not be opened.\n";
+		exit(1);
+	}
+	TemplateNode<T> *startNode = currNode;
+	// FIXME write to file 
+}
+
+// create a new list from text file
+template <typename T>
+void DoublyLinkedList<T>::loadFromFile()
+{
+
+	ifstream textFile("input.txt", ios::in);
+	if (!textFile)
+	{
+		cerr << "File could not be found or opened.\n";
+		exit(1);
+	}
+	// TODO take a look at this T::readFile(textFile);
+	auto studentVector = Student::readFile(textFile);
+	textFile.close();
 }
 
 template <typename T>

@@ -80,6 +80,24 @@ std::string Student::getLastName() const
 	return lastName;
 }
 
+//read file and return a vector of students
+// IMPR should return const reference
+vector<Student> Student::readFile(ifstream file)
+{
+	vector<Student> studentVector;
+	string id, fName, lName;
+	while (!file.eof())
+	{
+		getline(file, id, '\t');
+		getline(file, fName, '\t');
+		getline(file, lName, '\t');
+		Student student(id, fName, lName);
+		studentVector.push_back(student);
+	}
+	file.close();
+	return studentVector;
+}
+
 void Student::toUpper(string& str)
 {
 	for (auto i = 0; i < str.length(); i++)

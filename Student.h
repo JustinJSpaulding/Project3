@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -33,6 +35,8 @@ public:
 	string getID() const;
 	string getFirstName() const;
 	string getLastName() const;
+
+	static vector<Student> readFile(ifstream file);
 
 	//convert string to UPPERCASE
 	void toUpper(string &str);

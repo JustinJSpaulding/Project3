@@ -1,24 +1,29 @@
 #pragma once
 #include <iostream>
 #include <fstream>
+#include <string>
+#include "Student.h"
+
 
 using namespace std;
 
 #ifndef DoublyLinkedList_H
 #define DoublyLinkedList_H
 
+template<typename T>
+class TemplateNode
+{
+public:
+	T data;
+	TemplateNode *next;
+	TemplateNode *prev;
+};
+
 template <typename T>
 class DoublyLinkedList
 {
 private:
-	struct TemplateNode
-	{
-		T data;
-		TemplateNode *next;
-		TemplateNode *prev;
-	};
-
-	TemplateNode *currNode;
+	TemplateNode<T> *currNode;
 	size_t size = 0;
 
 public:
@@ -32,13 +37,14 @@ public:
 	void sort();
 	void searchFor();
 	void displayList();
-	void saveToFile();
+	void writeToFile();
 	void loadFromFile();
 	void displayCurrent();
 	void displayNext();
 	void displayPrev();
 	void displayFirst(); //display first item in sorted list
 	void displayLast(); //display last item in sorted list
+	void displaySize();
 	void getSizeOfList();
 	void deleteList();
 };
